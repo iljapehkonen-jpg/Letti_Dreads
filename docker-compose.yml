@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./Backend/Letti_dreads_Backend
+      dockerfile: Dockerfile
+    container_name: letti-backend
+    working_dir: /app
+    volumes:
+      - ./Backend/Letti_dreads_Backend:/app
+      - backend_media:/app/media
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+      DJANGO_DEBUG: "true"
+      DJANGO_ALLOWED_HOSTS: "backend,frontend,localhost,127.0.0.1"
+    expose:
+      - "8000"
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build:
+      context: ./FrontEnd/letti_dreads
+      dockerfile: Dockerfile
+    container_name: letti-nginx
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  backend_media:

@@ -1,0 +1,78 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.swp
+*.sw?
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environment files
+.env
+.env.*
+*.local
+
+# Node / frontend
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/build/
+**/.vite/
+
+# Python / Django
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.mypy_cache/
+**/.coverage
+**/.coverage.*
+**/htmlcov/
+**/.python-version
+**/.venv/
+**/venv/
+**/ENV/
+**/env/
+**/env.bak/
+**/venv.bak/
+**/pip-wheel-metadata/
+
+# Django runtime / generated files
+**/db.sqlite3
+**/*.sqlite3
+**/media/
+**/staticfiles/
+**/local_settings.py
+**/celerybeat-schedule
+
+# Python packaging
+**/.Python
+**/*.egg-info/
+**/.eggs/
+**/*.egg
+**/develop-eggs/
+**/downloads/
+**/eggs/
+**/lib/
+**/lib64/
+**/parts/
+**/sdist/
+**/var/
+**/.installed.cfg
+
+# Misc
+*.ntvs*
+*.njsproj
+*.sln
