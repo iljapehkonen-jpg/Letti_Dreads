@@ -1,0 +1,689 @@
+.cart {
+  padding: 120px 20px 120px 20px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.content {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+.sidebar {
+  flex: 0 0 320px;
+  width: 320px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.items {
+  width: 100%;
+  flex-shrink: 1;
+}
+.cartPay {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 2;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h3 {
+    text-align: center;
+  }
+}
+info {
+  display: flex;
+}
+
+.truncate3 {
+  width: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  gap: 14px;
+  position: relative;
+}
+
+.orderStatusCard {
+  width: 100%;
+  flex-shrink: 2;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+  padding: 16px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h3 {
+    text-align: center;
+  }
+}
+
+.orderStatusRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.orderEmpty {
+  text-align: center;
+  color: #666;
+}
+
+.itemPinned {
+  border: 1px solid rgba(196, 154, 58, 0.45);
+  box-shadow: 0px 0px 24px rgba(196, 154, 58, 0.18);
+}
+.itemCheckboxColumn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  width: 22px;
+  margin-left: 0;
+  padding-top: 6px;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.itemImage {
+  width: 144px;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.optionsLine {
+  font-size: 14px;
+  color: #666;
+}
+.quantityControl {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.minus,
+.plus {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //padding: 0px 5px; ?
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.buttons button {
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #1a1d24;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-1px);
+  }
+}
+
+.trashIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.pinButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #6f7682;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.15s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    color: #b9891f;
+    box-shadow: 0px 0px 18px rgba(185, 137, 31, 0.16);
+  }
+}
+
+.pinButtonActive {
+  color: #b9891f;
+  background: linear-gradient(180deg, #fff7db 0%, #f4e3a4 100%);
+  box-shadow: 0px 0px 18px rgba(185, 137, 31, 0.18);
+}
+
+.pinIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.selectAllPanel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* checkbox style used next to select all */
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 8px;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.checkboxChecked {
+  background-color: rgb(72, 78, 255);
+}
+
+/* show a white checkmark when selected */
+.checkboxChecked::after {
+  content: "\2713"; /* check symbol ✓ */
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.itemCheckbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.itemCheckboxChecked {
+  background-color: blue;
+}
+
+.itemCheckboxChecked::after {
+  content: "\2713";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+.leftInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 1;
+  width: 100%;
+}
+.buttonPanel {
+  display: flex;
+  gap: 15px;
+}
+
+.buttonPanel button {
+  padding: 0;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.price {
+  flex: 0 0 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+}
+.cartPayInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #c2c2c2;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  padding: 30px 0px 40px 0px;
+}
+.pay {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.modalActionRow {
+  display: flex;
+  margin-top: auto;
+}
+
+.confirmButton {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: none;
+  background-color: #0c0d0f;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.emptyState {
+  width: 100%;
+  padding: 40px 20px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  box-sizing: border-box;
+}
+.textCartPay,
+.periseCartPay {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0px 25px 0px;
+}
+
+@media screen and (max-width: 1100px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: none;
+    flex: none;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .cart {
+    padding: 108px 14px 48px;
+    gap: 18px;
+  }
+
+  .cart > h2 {
+    align-self: flex-start;
+  }
+
+  .selectAllPanel {
+    padding: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    grid-template-areas:
+      "check info"
+      "check price"
+      "check controls";
+    align-items: start;
+    padding: 14px;
+  }
+
+  .itemCheckboxColumn {
+    grid-area: check;
+    padding-top: 4px;
+  }
+
+  .info {
+    grid-area: info;
+    align-items: flex-start;
+  }
+
+  .price {
+    grid-area: price;
+    flex: none;
+    justify-content: flex-start;
+    padding: 0 0 0 154px;
+    min-height: 0;
+  }
+
+  .button {
+    grid-area: controls;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 154px;
+    gap: 14px;
+  }
+
+  .quantityControl {
+    margin-bottom: 0;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .truncate3 {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .itemImage {
+    width: 132px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .cart {
+    padding: 98px 10px 34px;
+  }
+
+  .content {
+    gap: 14px;
+  }
+
+  .selectAllPanel {
+    align-items: flex-start;
+    border-radius: 14px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "check"
+      "info"
+      "price"
+      "controls";
+    gap: 12px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .itemCheckboxColumn {
+    width: auto;
+    align-self: start;
+    padding-top: 0;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .itemImage {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .itemCheckboxColumn {
+    margin-bottom: -4px;
+  }
+
+  .text {
+    gap: 6px;
+  }
+
+  .text h3 {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .optionsLine,
+  .truncate3 {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .price {
+    padding-left: 0;
+  }
+
+  .price h3 {
+    font-size: 22px;
+  }
+
+  .button {
+    padding-left: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quantityControl {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .minus,
+  .plus {
+    min-height: 40px;
+  }
+
+  .buttons {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .cartPay,
+  .orderStatusCard,
+  .emptyState,
+  .selectAllPanel {
+    border-radius: 16px;
+  }
+
+  .cartPay,
+  .orderStatusCard {
+    padding: 16px;
+  }
+
+  .cartPayInfo {
+    padding: 18px 0 24px;
+    gap: 16px;
+  }
+
+  .pay {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .textCartPay,
+  .periseCartPay {
+    gap: 10px;
+  }
+
+  .total {
+    padding: 12px 0 18px;
+  }
+}
+
+:global(:root[data-theme="dark"]),
+:global(:root[data-theme="burgundy"]),
+:global(:root[data-theme="olive"]),
+:global(:root[data-theme="forest"]),
+:global(:root[data-theme="sapphire"]),
+:global(:root[data-theme="plum"]),
+:global(:root[data-theme="terracotta"]),
+:global(:root[data-theme="graphite"]) {
+  .cart h2,
+  .cart h3,
+  .cart .total,
+  .cart .selectAllPanel,
+  .cart .item,
+  .cart .cartPay,
+  .cart .orderStatusCard,
+  .cart .emptyState {
+    color: #f3f5f7;
+  }
+
+  .optionsLine,
+  .truncate3,
+  .textCartPay,
+  .periseCartPay,
+  .orderEmpty {
+    color: #c7ced8;
+  }
+
+  .selectAllPanel,
+  .item,
+  .cartPay,
+  .orderStatusCard,
+  .emptyState {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .buttons button,
+  .delete,
+  .pinButton {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f3f5f7;
+  }
+
+  .itemPinned {
+    border-color: rgba(244, 206, 109, 0.45);
+    box-shadow: none;
+  }
+
+  .pinButton {
+    box-shadow: none;
+  }
+
+  .pinButtonActive {
+    background: rgba(244, 206, 109, 0.16);
+    color: #f4ce6d;
+    border-color: rgba(244, 206, 109, 0.38);
+  }
+
+  .quantityControl {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .minus,
+  .plus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #f3f5f7;
+  }
+
+  .pay {
+    background-color: #f3f5f7;
+    color: #11151b;
+  }
+
+  .confirmButton {
+    background-color: #f3f5f7;
+    color: #11151b;
+  }
+
+  .checkbox,
+  .itemCheckbox {
+    border-color: #f3f5f7;
+  }
+}

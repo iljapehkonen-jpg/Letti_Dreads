@@ -1,0 +1,216 @@
+.faq {
+  padding: 120px 20px 40px;
+  min-height: calc(100vh - 220px);
+  box-sizing: border-box;
+}
+
+.hero {
+  width: min(100%, 1000px);
+  margin: 0 auto 36px;
+  text-align: center;
+
+  h1 {
+    margin: 0 0 16px;
+    font-size: clamp(34px, 6vw, 56px);
+    color: #1a1d24;
+  }
+
+  p {
+    margin: 0 auto;
+    max-width: 760px;
+    color: #5b6270;
+    font-size: 24px;
+    line-height: 1.8;
+  }
+}
+
+.content {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.tipCard,
+.item {
+  padding: 28px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(12, 13, 15, 0.08);
+}
+
+.tipCard {
+  background: linear-gradient(135deg, #eef2ff 0%, #f8f9ff 100%);
+  border: 1px solid rgba(50, 72, 243, 0.12);
+}
+
+.tipCard h2,
+.sectionHeader h2,
+.item h3 {
+  margin: 0 0 12px;
+  color: #1a1d24;
+  font-size: 32px;
+}
+
+.sectionHeader p,
+.tipCard p,
+.item p {
+  margin: 0;
+  color: #5b6270;
+  font-size: 21px;
+  line-height: 1.8;
+}
+
+.section {
+  display: grid;
+  gap: 18px;
+}
+
+.sectionHeader {
+  display: grid;
+  gap: 10px;
+}
+
+.list,
+.careGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.careRows {
+  display: grid;
+  gap: 18px;
+}
+
+.careGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.list .item {
+  display: flex;
+  flex-direction: column;
+}
+
+.careGrid .item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.careGrid .item h3 {
+  min-height: 2.4em;
+  line-height: 1.18;
+}
+
+.careGrid .item p:not(.tip) {
+  flex: 1;
+}
+
+.tip {
+  margin-top: 18px !important;
+  font-weight: 700;
+  font-size: 20px !important;
+  color: #3248f3 !important;
+}
+
+:global(:root[data-theme="dark"]),
+:global(:root[data-theme="burgundy"]),
+:global(:root[data-theme="olive"]),
+:global(:root[data-theme="forest"]),
+:global(:root[data-theme="sapphire"]),
+:global(:root[data-theme="plum"]),
+:global(:root[data-theme="terracotta"]),
+:global(:root[data-theme="graphite"]) {
+  .hero h1,
+  .tipCard h2,
+  .sectionHeader h2,
+  .item h3 {
+    color: #f3f5f7;
+  }
+
+  .hero p,
+  .sectionHeader p,
+  .tipCard p,
+  .item p {
+    color: #c7ced8;
+  }
+
+  .tipCard,
+  .item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .tipCard {
+    background: rgba(50, 72, 243, 0.14);
+  }
+
+  .tip {
+    color: #90a0ff !important;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .faq {
+    padding: 110px 16px 32px;
+  }
+
+  .hero p,
+  .sectionHeader p,
+  .tipCard p,
+  .item p {
+    font-size: 18px;
+  }
+
+  .tipCard,
+  .item {
+    padding: 20px;
+  }
+
+  .tipCard h2,
+  .sectionHeader h2,
+  .item h3 {
+    font-size: 26px;
+  }
+
+  .careGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .faq {
+    padding: 102px 12px 28px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p,
+  .sectionHeader p,
+  .tipCard p,
+  .item p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .tipCard,
+  .item {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .tipCard h2,
+  .sectionHeader h2,
+  .item h3 {
+    font-size: 22px;
+  }
+
+  .tip {
+    font-size: 17px !important;
+    margin-top: 14px !important;
+  }
+}

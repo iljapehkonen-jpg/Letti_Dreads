@@ -1,0 +1,396 @@
+.page {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 132px 20px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero,
+.processPanel,
+.contactStrip {
+  border-radius: 30px;
+  background: linear-gradient(180deg, #fffdfa 0%, #f6efe9 100%);
+  border: 1px solid rgba(91, 63, 39, 0.08);
+  box-shadow: 0 18px 40px rgba(24, 20, 18, 0.08);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 24px;
+  padding: 30px;
+  align-items: center;
+}
+
+.heroCopy span,
+.sectionIntro span {
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(122, 75, 50, 0.1);
+  color: #8a543d;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1,
+.sectionIntro h2,
+.processIntro h2,
+.contactStrip h2 {
+  margin: 16px 0 14px;
+  color: #1e1815;
+  line-height: 1.1;
+}
+
+.heroCopy h1 {
+  font-size: clamp(52px, 6vw, 78px);
+}
+
+.sectionIntro h2,
+.processIntro h2,
+.contactStrip h2 {
+  font-size: clamp(42px, 5vw, 58px);
+}
+
+.heroCopy p,
+.processIntro p,
+.contactStrip p,
+.exampleCopy p,
+.stepCard p {
+  margin: 0;
+  color: #5d554f;
+  font-size: 24px;
+  line-height: 1.8;
+}
+
+.heroActions,
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 54px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: 21px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #8a4d38 0%, #b97856 100%);
+  color: #fff8f3;
+  box-shadow: 0 14px 28px rgba(138, 77, 56, 0.24);
+}
+
+.secondaryButton {
+  background: rgba(138, 77, 56, 0.08);
+  color: #5f3828;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.heroVisual {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) 124px;
+  gap: 12px;
+  align-items: center;
+  justify-content: end;
+}
+
+.visualCard,
+.visualStack img,
+.exampleCard img {
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.visualCard img,
+.visualStack img,
+.exampleCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.visualCard {
+  height: 360px;
+  animation: drift 7s ease-in-out infinite;
+}
+
+.visualStack {
+  display: grid;
+  gap: 16px;
+}
+
+.visualStack img:first-child {
+  height: 174px;
+  animation: drift 8s ease-in-out infinite reverse;
+}
+
+.visualStack img:last-child {
+  height: 174px;
+  animation: drift 9s ease-in-out infinite;
+}
+
+.examples {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sectionIntro {
+  text-align: center;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  grid-auto-rows: 1fr;
+}
+
+.exampleCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fffdfb;
+  border: 1px solid rgba(91, 63, 39, 0.08);
+  box-shadow: 0 16px 34px rgba(24, 20, 18, 0.07);
+  animation: rise 0.7s ease both;
+  max-width: 300px;
+  justify-self: center;
+  height: 100%;
+}
+
+.exampleCard img {
+  aspect-ratio: 1 / 1;
+}
+
+.exampleCopy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 18px 20px;
+}
+
+.exampleCopy h3 {
+  margin: 0 0 10px;
+  color: #1f1a17;
+  font-size: 32px;
+}
+
+.processPanel {
+  padding: 32px;
+}
+
+.processIntro {
+  max-width: 720px;
+}
+
+.processSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.stepCard {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(91, 63, 39, 0.08);
+}
+
+.stepCard strong {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: #8a4d38;
+  font-size: 34px;
+}
+
+.contactStrip {
+  padding: 34px;
+  text-align: center;
+}
+
+.contactStrip p {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.contactActions {
+  justify-content: center;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+:global(:root[data-theme="dark"]),
+:global(:root[data-theme="burgundy"]),
+:global(:root[data-theme="olive"]),
+:global(:root[data-theme="forest"]),
+:global(:root[data-theme="sapphire"]),
+:global(:root[data-theme="plum"]),
+:global(:root[data-theme="terracotta"]),
+:global(:root[data-theme="graphite"]) {
+  .hero,
+  .processPanel,
+  .contactStrip,
+  .exampleCard {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .heroCopy span,
+  .sectionIntro span {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f5d2c5;
+  }
+
+  .heroCopy h1,
+  .sectionIntro h2,
+  .processIntro h2,
+  .contactStrip h2,
+  .exampleCopy h3 {
+    color: #f3f5f7;
+  }
+
+  .heroCopy p,
+  .processIntro p,
+  .contactStrip p,
+  .exampleCopy p,
+  .stepCard p {
+    color: #c7ced8;
+  }
+
+  .stepCard {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .secondaryButton {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f7ddd2;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hero,
+  .cardGrid,
+  .processSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .heroVisual {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .visualCard,
+  .visualStack img:first-child,
+  .visualStack img:last-child {
+    height: 260px;
+  }
+
+  .exampleCard {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .page {
+    padding: 116px 14px 40px;
+    gap: 24px;
+  }
+
+  .hero,
+  .processPanel,
+  .contactStrip {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .exampleCard {
+    border-radius: 22px;
+  }
+
+  .exampleCopy {
+    padding: 18px 18px 20px;
+  }
+
+  .heroCopy h1 {
+    font-size: 38px;
+  }
+
+  .sectionIntro h2,
+  .processIntro h2,
+  .contactStrip h2 {
+    font-size: 31px;
+  }
+
+  .heroCopy p,
+  .processIntro p,
+  .contactStrip p,
+  .exampleCopy p,
+  .stepCard p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .exampleCopy h3 {
+    font-size: 24px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    font-size: 17px;
+  }
+
+  .heroActions,
+  .contactActions {
+    flex-direction: column;
+  }
+}

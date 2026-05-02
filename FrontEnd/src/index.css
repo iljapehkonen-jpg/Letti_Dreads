@@ -1,0 +1,256 @@
+:root {
+  --app-bg: #f6f7f9;
+  --app-text: #15181d;
+  --header-bg: #0c0d0f;
+  --header-text: #ffffff;
+  --header-surface: #15181d;
+  --footer-bg-start: #121418;
+  --footer-bg-end: #0c0d0f;
+  --footer-text: #f5f5f5;
+  --theme-accent: #3248f3;
+  --theme-accent-soft: rgba(50, 72, 243, 0.14);
+  --settings-bg: #ffffff;
+  --settings-text: #15181d;
+  --settings-card-bg: rgba(12, 13, 15, 0.05);
+  --settings-card-border: rgba(12, 13, 15, 0.08);
+  --settings-button-bg: #ffffff;
+  --settings-button-border: rgba(12, 13, 15, 0.12);
+  --settings-button-text: #15181d;
+  --settings-active-bg: #0c0d0f;
+  --settings-active-border: #0c0d0f;
+  --settings-active-text: #ffffff;
+  --logo-glow: rgba(50, 72, 243, 0.22);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*overflow-x: hidden;*/
+}
+
+:root[data-theme="dark"] {
+  --app-bg: #0f1115;
+  --app-text: #f2f4f7;
+  --header-bg: #050608;
+  --header-text: #ffffff;
+  --header-surface: #11151b;
+  --footer-bg-start: #0a0c10;
+  --footer-bg-end: #050608;
+  --footer-text: #f5f5f5;
+  --theme-accent: #90a0ff;
+  --theme-accent-soft: rgba(144, 160, 255, 0.16);
+  --settings-bg: #11151b;
+  --settings-text: #f3f5f7;
+  --settings-card-bg: rgba(255, 255, 255, 0.05);
+  --settings-card-border: rgba(255, 255, 255, 0.1);
+  --settings-button-bg: rgba(255, 255, 255, 0.05);
+  --settings-button-border: rgba(255, 255, 255, 0.14);
+  --settings-button-text: #f3f5f7;
+  --settings-active-bg: #ffffff;
+  --settings-active-border: #ffffff;
+  --settings-active-text: #11151b;
+  --logo-glow: rgba(144, 160, 255, 0.3);
+}
+
+:root[data-theme="burgundy"] {
+  --app-bg: #341722;
+  --app-text: #fff4f6;
+  --header-bg: #6a2336;
+  --header-text: #fff8f9;
+  --header-surface: #772d42;
+  --footer-bg-start: #6b2639;
+  --footer-bg-end: #431924;
+  --footer-text: #fff0f3;
+  --theme-accent: #ff7ca3;
+  --theme-accent-soft: rgba(255, 124, 163, 0.24);
+  --settings-bg: #772d42;
+  --settings-text: #fff7f8;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(255, 224, 232, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(255, 224, 232, 0.2);
+  --settings-button-text: #fff7f8;
+  --settings-active-bg: #ff7ca3;
+  --settings-active-border: #ff7ca3;
+  --settings-active-text: #4a1725;
+  --logo-glow: rgba(255, 124, 163, 0.42);
+}
+
+:root[data-theme="olive"] {
+  --app-bg: #2d351f;
+  --app-text: #f7f8ed;
+  --header-bg: #5c6d36;
+  --header-text: #f8faef;
+  --header-surface: #68793e;
+  --footer-bg-start: #5d6f38;
+  --footer-bg-end: #3a4523;
+  --footer-text: #eef3e2;
+  --theme-accent: #cfe166;
+  --theme-accent-soft: rgba(207, 225, 102, 0.24);
+  --settings-bg: #68793e;
+  --settings-text: #f7f8ee;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(237, 243, 204, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(237, 243, 204, 0.2);
+  --settings-button-text: #f7f8ee;
+  --settings-active-bg: #cfe166;
+  --settings-active-border: #cfe166;
+  --settings-active-text: #313b1e;
+  --logo-glow: rgba(207, 225, 102, 0.38);
+}
+
+:root[data-theme="forest"] {
+  --app-bg: #1d3025;
+  --app-text: #eef8f0;
+  --header-bg: #214b33;
+  --header-text: #f3fbf5;
+  --header-surface: #2b5c3f;
+  --footer-bg-start: #234d35;
+  --footer-bg-end: #172f21;
+  --footer-text: #eaf7ee;
+  --theme-accent: #74d49a;
+  --theme-accent-soft: rgba(116, 212, 154, 0.22);
+  --settings-bg: #2b5c3f;
+  --settings-text: #f2fbf4;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(226, 246, 232, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(226, 246, 232, 0.2);
+  --settings-button-text: #f2fbf4;
+  --settings-active-bg: #74d49a;
+  --settings-active-border: #74d49a;
+  --settings-active-text: #173621;
+  --logo-glow: rgba(116, 212, 154, 0.36);
+}
+
+:root[data-theme="sapphire"] {
+  --app-bg: #17243a;
+  --app-text: #f2f7ff;
+  --header-bg: #1b3d6b;
+  --header-text: #f7fbff;
+  --header-surface: #244a7d;
+  --footer-bg-start: #1e4471;
+  --footer-bg-end: #13263f;
+  --footer-text: #eef5ff;
+  --theme-accent: #7eb7ff;
+  --theme-accent-soft: rgba(126, 183, 255, 0.24);
+  --settings-bg: #244a7d;
+  --settings-text: #f6faff;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(231, 240, 255, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(231, 240, 255, 0.2);
+  --settings-button-text: #f6faff;
+  --settings-active-bg: #7eb7ff;
+  --settings-active-border: #7eb7ff;
+  --settings-active-text: #173152;
+  --logo-glow: rgba(126, 183, 255, 0.42);
+}
+
+:root[data-theme="plum"] {
+  --app-bg: #2b1d39;
+  --app-text: #f9f3ff;
+  --header-bg: #5b2c76;
+  --header-text: #fcf8ff;
+  --header-surface: #673284;
+  --footer-bg-start: #5b2f73;
+  --footer-bg-end: #341f43;
+  --footer-text: #f7efff;
+  --theme-accent: #c995ff;
+  --theme-accent-soft: rgba(201, 149, 255, 0.24);
+  --settings-bg: #673284;
+  --settings-text: #fcf7ff;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(242, 228, 255, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(242, 228, 255, 0.2);
+  --settings-button-text: #fcf7ff;
+  --settings-active-bg: #c995ff;
+  --settings-active-border: #c995ff;
+  --settings-active-text: #3a1e4e;
+  --logo-glow: rgba(201, 149, 255, 0.4);
+}
+
+:root[data-theme="terracotta"] {
+  --app-bg: #3b221b;
+  --app-text: #fff5f1;
+  --header-bg: #8a452d;
+  --header-text: #fff9f6;
+  --header-surface: #995036;
+  --footer-bg-start: #8d482f;
+  --footer-bg-end: #4e2a1f;
+  --footer-text: #fff1eb;
+  --theme-accent: #ffb081;
+  --theme-accent-soft: rgba(255, 176, 129, 0.24);
+  --settings-bg: #995036;
+  --settings-text: #fff9f6;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(255, 234, 222, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(255, 234, 222, 0.2);
+  --settings-button-text: #fff9f6;
+  --settings-active-bg: #ffb081;
+  --settings-active-border: #ffb081;
+  --settings-active-text: #5a2c1e;
+  --logo-glow: rgba(255, 176, 129, 0.4);
+}
+
+:root[data-theme="graphite"] {
+  --app-bg: #22262d;
+  --app-text: #f5f7fb;
+  --header-bg: #3f4651;
+  --header-text: #fbfcff;
+  --header-surface: #4b5461;
+  --footer-bg-start: #414955;
+  --footer-bg-end: #262b33;
+  --footer-text: #edf1f7;
+  --theme-accent: #a9bed8;
+  --theme-accent-soft: rgba(169, 190, 216, 0.22);
+  --settings-bg: #4b5461;
+  --settings-text: #fbfcff;
+  --settings-card-bg: rgba(255, 255, 255, 0.09);
+  --settings-card-border: rgba(235, 240, 248, 0.18);
+  --settings-button-bg: rgba(255, 255, 255, 0.1);
+  --settings-button-border: rgba(235, 240, 248, 0.2);
+  --settings-button-text: #fbfcff;
+  --settings-active-bg: #a9bed8;
+  --settings-active-border: #a9bed8;
+  --settings-active-text: #2c3642;
+  --logo-glow: rgba(169, 190, 216, 0.34);
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+button {
+  cursor: pointer;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  overflow-x: clip;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}

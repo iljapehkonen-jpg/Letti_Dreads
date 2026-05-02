@@ -1,0 +1,365 @@
+.shop {
+  padding: 120px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &List {
+    display: grid;
+    width: 100%;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    justify-items: center;
+    align-items: start;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 300;
+}
+
+.productModal {
+  position: relative;
+  width: min(100%, 1080px);
+  max-height: min(88vh, 900px);
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #11151b;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+  max-height: calc(88vh - 48px);
+  overflow-y: auto;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  max-height: 100%;
+  overflow: hidden;
+  padding-right: 0;
+
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+
+  p {
+    color: #555;
+    line-height: 1.5;
+  }
+}
+
+.optionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong {
+    font-size: 28px;
+    line-height: 1;
+    color: #111;
+  }
+
+  span {
+    color: #666;
+    font-size: 13px;
+  }
+}
+
+.lengthOptions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  button {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #cfcfcf;
+    background-color: #fff;
+    cursor: pointer;
+  }
+}
+
+.lengthActive {
+  background-color: #111 !important;
+  color: #fff;
+  border-color: #111 !important;
+}
+
+.quantityHint {
+  font-size: 14px;
+  color: #767676;
+}
+
+.quantityControl {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #d7d7d7;
+  border-radius: 999px;
+  overflow: hidden;
+
+  button {
+    border: none;
+    background-color: #f3f3f3;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+
+.quantityValue {
+  min-width: 64px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.actionButtons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.payNowButton,
+.addToCartButton {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.payNowButton {
+  background-color: #d9d9d9;
+  color: #111;
+}
+
+.addToCartButton {
+  background-color: #0c0d0f;
+  color: #fff;
+}
+
+.modalPreview {
+  order: -1;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  min-height: 0;
+  height: auto;
+  overflow: hidden;
+}
+
+.previewScrollerWrap {
+  display: flex;
+  align-items: stretch;
+}
+
+.previewStage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  height: auto;
+  padding: 4px 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: min(52vh, 560px);
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
+.previewScroller {
+  width: 116px;
+  height: 100%;
+  max-height: min(64vh, 700px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+}
+
+.previewScrollButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d7d7d7;
+  border-radius: 999px;
+  background-color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.previewScroller::-webkit-scrollbar {
+  width: 8px;
+}
+
+.previewScroller::-webkit-scrollbar-thumb {
+  background-color: #c8c8c8;
+  border-radius: 999px;
+}
+
+.previewThumb {
+  border: 1px solid #d7d7d7;
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 116px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.previewThumbActive {
+  border-color: #111;
+}
+
+:global(:root[data-theme="dark"]),
+:global(:root[data-theme="burgundy"]),
+:global(:root[data-theme="olive"]),
+:global(:root[data-theme="forest"]),
+:global(:root[data-theme="sapphire"]),
+:global(:root[data-theme="plum"]),
+:global(:root[data-theme="terracotta"]),
+:global(:root[data-theme="graphite"]) {
+  .shop h1,
+  .modalForm h2,
+  .modalForm h3,
+  .priceBlock strong {
+    color: #f3f5f7;
+  }
+
+  .modalForm p,
+  .priceBlock span {
+    color: #c7ced8;
+  }
+
+  .productModal {
+    background-color: #11151b;
+  }
+
+  .closeButton {
+    color: #f3f5f7;
+  }
+
+  .lengthOptions button,
+  .previewThumb {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #f3f5f7;
+  }
+
+  .quantityControl {
+    border-color: rgba(255, 255, 255, 0.14);
+
+    button {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #f3f5f7;
+    }
+  }
+
+  .payNowButton {
+    background-color: rgba(255, 255, 255, 0.16);
+    color: #f3f5f7;
+  }
+
+  .addToCartButton {
+    background-color: #f3f5f7;
+    color: #11151b;
+  }
+
+  .lengthActive {
+    background-color: #f3f5f7 !important;
+    color: #11151b !important;
+    border-color: #f3f5f7 !important;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .shopList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actionButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .modalPreview {
+    flex-direction: column;
+  }
+
+  .previewScrollerWrap {
+    width: 100%;
+  }
+
+  .previewScroller {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-direction: row;
+    padding-right: 0;
+    padding-bottom: 6px;
+  }
+
+  .previewThumb {
+    min-width: 96px;
+  }
+
+  .previewScrollButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .previewStage img {
+    max-height: 320px;
+  }
+}

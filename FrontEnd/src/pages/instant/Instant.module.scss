@@ -1,0 +1,64 @@
+.instant {
+  padding: 120px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instantList {
+  display: grid;
+  width: 100%;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  justify-items: center;
+  align-items: start;
+}
+
+.emptyState {
+  width: 100%;
+  padding: 48px 24px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.instantModal {
+  width: min(100%, 1000px);
+}
+
+.instantActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+:global(:root[data-theme="dark"]) .instant h1,
+:global(:root[data-theme="burgundy"]) .instant h1,
+:global(:root[data-theme="olive"]) .instant h1,
+:global(:root[data-theme="forest"]) .instant h1,
+:global(:root[data-theme="sapphire"]) .instant h1,
+:global(:root[data-theme="plum"]) .instant h1,
+:global(:root[data-theme="terracotta"]) .instant h1,
+:global(:root[data-theme="graphite"]) .instant h1 {
+  color: #f3f5f7;
+}
+
+:global(:root[data-theme="dark"]) .emptyState,
+:global(:root[data-theme="burgundy"]) .emptyState,
+:global(:root[data-theme="olive"]) .emptyState,
+:global(:root[data-theme="forest"]) .emptyState,
+:global(:root[data-theme="sapphire"]) .emptyState,
+:global(:root[data-theme="plum"]) .emptyState,
+:global(:root[data-theme="terracotta"]) .emptyState,
+:global(:root[data-theme="graphite"]) .emptyState {
+  color: #c7ced8;
+}
+
+@media screen and (max-width: 730px) {
+  .instantList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .instantActions {
+    grid-template-columns: 1fr;
+  }
+}

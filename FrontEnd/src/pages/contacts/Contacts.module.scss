@@ -1,0 +1,318 @@
+.contacts {
+  padding: 120px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  min-height: calc(100vh - 250px);
+
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .mapContainer {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(50, 72, 243, 0.2);
+    background-color: #ffffff;
+    position: relative;
+    z-index: 0;
+
+    .mapLink {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #3248f3;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .infoSection {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    .infoCard {
+      padding: 28px;
+      border-radius: 18px;
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #3248f3;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #3248f3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .contactInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .infoItem {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 15px;
+        align-items: baseline;
+
+        strong {
+          color: #3248f3;
+          min-width: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .socialBlock {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .socialLink {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+    }
+
+    .socialIcon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #3248f3;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+    }
+
+    .socialIconInstagram {
+      background: linear-gradient(135deg, #f58529 0%, #dd2a7b 55%, #8134af 100%);
+      color: #ffffff;
+    }
+
+    .socialIconFacebook {
+      background: #1877f2;
+      color: #ffffff;
+    }
+
+    .socialIconPinterest {
+      background: #e60023;
+      color: #ffffff;
+    }
+
+    .hours {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 8px 0;
+          color: #666;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 20px;
+          align-items: baseline;
+
+          strong {
+            color: #333;
+          }
+        }
+      }
+    }
+
+    .bookingNote {
+      margin-top: 12px;
+      margin-bottom: 0;
+      font-style: normal;
+      font-weight: 700;
+      color: #333;
+    }
+  }
+}
+
+:global(:root[data-theme="dark"]),
+:global(:root[data-theme="burgundy"]),
+:global(:root[data-theme="olive"]),
+:global(:root[data-theme="forest"]),
+:global(:root[data-theme="sapphire"]),
+:global(:root[data-theme="plum"]),
+:global(:root[data-theme="terracotta"]),
+:global(:root[data-theme="graphite"]) {
+  .contacts h1,
+  .contacts .infoSection .hours ul li strong {
+    color: #f3f5f7;
+  }
+
+  .contacts .infoSection p,
+  .contacts .infoSection .hours ul li,
+  .contacts .infoSection .bookingNote {
+    color: #c7ced8;
+  }
+
+  .contacts .mapContainer,
+  .contacts .infoSection .infoCard {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts {
+    padding: 104px 15px 20px 15px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .mapContainer {
+      height: 350px;
+    }
+
+    .infoSection {
+      grid-template-columns: 1fr;
+      gap: 30px;
+
+      h2 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .socialBlock {
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .contactInfo .infoItem {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .socialLink {
+        width: 40px;
+        height: 40px;
+      }
+
+      .socialIcon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contacts {
+    padding: 60px 10px 20px 10px;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .mapContainer {
+      height: 250px;
+    }
+
+    .infoSection {
+      h2 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+
+      .contactInfo .infoItem {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+    }
+  }
+}

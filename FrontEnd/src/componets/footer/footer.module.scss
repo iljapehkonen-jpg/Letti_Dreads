@@ -1,0 +1,284 @@
+.footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.15fr 1fr;
+  gap: 32px;
+  padding: 56px 24px 24px;
+  background:
+    linear-gradient(180deg, var(--footer-bg-start) 0%, var(--footer-bg-end) 100%);
+  color: var(--footer-text);
+  box-sizing: border-box;
+}
+
+:global(:root[data-theme="dark"]) .footer,
+:global(:root[data-theme="burgundy"]) .footer,
+:global(:root[data-theme="olive"]) .footer,
+:global(:root[data-theme="forest"]) .footer,
+:global(:root[data-theme="sapphire"]) .footer,
+:global(:root[data-theme="plum"]) .footer,
+:global(:root[data-theme="terracotta"]) .footer,
+:global(:root[data-theme="graphite"]) .footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.brandBlock,
+.linkColumn,
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerToggle {
+  display: contents;
+}
+
+.footerCaret {
+  display: none;
+}
+
+.brandBlock h2,
+.linkColumn h3,
+.infoColumn h3 {
+  margin: 0 0 18px;
+}
+
+.brandBlock h2 {
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.brandBlock p {
+  margin: 0;
+  max-width: 280px;
+  color: #b7bcc6;
+  line-height: 1.6;
+}
+
+.footerLogo {
+  width: 112px;
+  height: auto;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 14px var(--logo-glow));
+}
+
+.actionLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+.socialIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.socialIcon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.socialLinkInstagram {
+  background: rgba(221, 42, 123, 0.12);
+}
+
+.socialLinkFacebook {
+  background: rgba(24, 119, 242, 0.12);
+}
+
+.socialLinkPinterest {
+  background: rgba(230, 0, 35, 0.12);
+}
+
+.socialIconInstagram {
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 55%, #8134af 100%);
+}
+
+.socialIconFacebook {
+  background: #1877f2;
+}
+
+.socialIconPinterest {
+  background: #e60023;
+}
+
+.actionLinks a {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.actionLinks a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.menuList,
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuList li,
+.infoList li {
+  margin-bottom: 14px;
+}
+
+.menuList a,
+.infoList a {
+  color: #d9dde4;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.menuList a:hover,
+.infoList a:hover {
+  color: #ffffff;
+}
+
+.infoList span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8e96a3;
+}
+
+.infoList p {
+  margin: 0;
+  color: #d9dde4;
+}
+
+.bottomBar {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottomBar p {
+  margin: 0;
+  color: #8e96a3;
+}
+
+.bottomBar a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .footer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 20px 24px;
+  }
+
+  .linkColumn,
+  .infoColumn {
+    gap: 0;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footerToggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    text-align: left;
+    font: inherit;
+  }
+
+  .footerCaret {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .footerCaretOpen {
+    transform: rotate(-135deg);
+  }
+
+  .menuList,
+  .infoList {
+    display: none;
+    padding-bottom: 10px;
+  }
+
+  .footerSectionOpen {
+    display: block;
+  }
+
+  .brandBlock h2 {
+    font-size: 28px;
+  }
+
+  .brandBlock p,
+  .menuList a,
+  .infoList a,
+  .infoList p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
