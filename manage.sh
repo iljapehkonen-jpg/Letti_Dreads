@@ -10,13 +10,19 @@ if ! command -v docker >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! docker compose version >/dev/null 2>&1; then
-  echo "Docker Compose is not available. Install Docker Compose v2."
+COMPOSE_CMD=()
+
+if docker compose version >/dev/null 2>&1; then
+  COMPOSE_CMD=(docker compose)
+elif command -v docker-compose >/dev/null 2>&1; then
+  COMPOSE_CMD=(docker-compose)
+else
+  echo "Docker Compose is not available. Install docker compose v2 or docker-compose v1."
   exit 1
 fi
 
 run_compose() {
-  docker compose -f "$COMPOSE_FILE" "$@"
+  "${COMPOSE_CMD[@]}" -f "$COMPOSE_FILE" "$@"
 }
 
 show_help() {
