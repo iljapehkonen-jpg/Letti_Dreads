@@ -30,9 +30,10 @@ show_help() {
 Usage: ./manage.sh <command>
 
 Commands:
-  up         Build and start containers in foreground
+  up         Build and start containers in background
   down       Stop and remove containers
   restart    Restart the whole project
+  rebuild    Rebuild containers and restart in background
   build      Rebuild containers
   logs       Show logs for all services
   ps         Show running containers
@@ -48,16 +49,35 @@ Examples:
 EOF
 }
 
+show_startup_info() {
+  cat <<'EOF'
+
+Project is starting in Docker background mode.
+Frontend: http://127.0.0.1
+If it does not open, run:
+  ./manage.sh ps
+  ./manage.sh logs
+EOF
+}
+
 case "${1:-help}" in
   up)
-    run_compose up --build
+    run_compose up --build -d
+    show_startup_info
     ;;
   down)
     run_compose down
     ;;
   restart)
     run_compose down
-    run_compose up --build
+    run_compose up --build -d
+    show_startup_info
+    ;;
+  rebuild)
+    run_compose down
+    run_compose build --no-cache
+    run_compose up -d
+    show_startup_info
     ;;
   build)
     run_compose build

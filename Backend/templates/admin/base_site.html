@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+  #user-tools .letti-admin-site-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    margin-right: 8px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    text-transform: none;
+  }
+
+  #user-tools .letti-admin-site-link:hover,
+  #user-tools .letti-admin-site-link:focus {
+    background: #fff;
+    color: #0f172a;
+  }
+</style>
+{% endblock %}
+
+{% block userlinks %}
+  <a href="/" class="letti-admin-site-link" id="letti-admin-site-link">Back to site</a> /
+  {% if user.is_active and user.is_staff %}
+    {% url 'django-admindocs-docroot' as docsroot %}
+    {% if docsroot %}
+      <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
+    {% endif %}
+  {% endif %}
+  {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+  {% endif %}
+  <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+    {% csrf_token %}
+    <button type="submit">{% translate 'Log out' %}</button>
+  </form>
+  {% include "admin/color_theme_toggle.html" %}
+{% endblock %}
+
+{% block extrabody %}
+{{ block.super }}
+<script>
+  (() => {
+    const labels = {
+      fi: "Takaisin sivustolle",
+      en: "Back to site",
+      ru: "\u041d\u0430\u0437\u0430\u0434 \u043d\u0430 \u0441\u0430\u0439\u0442",
+      de: "Zur\u00fcck zur Website",
+      fr: "Retour au site",
+      it: "Torna al sito",
+      el: "\u0395\u03c0\u03b9\u03c3\u03c4\u03c1\u03bf\u03c6\u03ae \u03c3\u03c4\u03bf\u03bd \u03b9\u03c3\u03c4\u03cc\u03c4\u03bf\u03c0\u03bf",
+      es: "Volver al sitio",
+      et: "Tagasi saidile",
+      lv: "Atpaka\u013c uz vietni",
+      lt: "Gr\u012f\u017eti \u012f svetain\u0119",
+      pl: "Powr\u00f3t do strony",
+    };
+
+    const link = document.getElementById("letti-admin-site-link");
+    const savedLanguage = localStorage.getItem("letti-language");
+    if (link && labels[savedLanguage]) {
+      link.textContent = labels[savedLanguage];
+    }
+  })();
+</script>
+{% endblock %}

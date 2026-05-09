@@ -14,6 +14,25 @@
     var(--header-bg);
   box-sizing: border-box;
   backdrop-filter: blur(18px);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease,
+    background-color 0.28s ease,
+    box-shadow 0.32s ease,
+    border-color 0.28s ease;
+  will-change: transform, opacity;
+}
+
+.headerVisible {
+  transform: translateY(0);
+  opacity: 1;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.headerHidden {
+  transform: translateY(calc(-100% - 10px));
+  opacity: 0.92;
+  box-shadow: none;
 }
 
 .nav {
@@ -41,8 +60,9 @@
   border-radius: 999px;
   background-color: currentColor;
   transition:
-    transform 0.25s ease,
-    opacity 0.2s ease;
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease,
+    width 0.24s ease;
 }
 
 .menuToggleOpen .menuToggleBar:nth-child(1) {
@@ -131,7 +151,7 @@
 .menu > button:hover,
 .menuToggle:hover,
 .accountButton:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.02);
 }
 
 .menu > button svg {
@@ -306,9 +326,38 @@
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--header-text);
+  cursor: pointer;
+  font-family: inherit;
   font-size: 14px;
   line-height: 1.2;
   text-align: left;
+  text-decoration: none;
+}
+
+.accountAdminLink {
+  justify-content: space-between;
+  border-color: rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.accountAdminText {
+  min-width: 0;
+}
+
+.accountAdminLink::after {
+  content: "\2197";
+  flex-shrink: 0;
+  margin-left: 10px;
+  font-size: 12px;
+  opacity: 0.72;
+}
+
+.accountAdminLink:hover {
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .logoutButton {
@@ -356,8 +405,8 @@
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.32s ease,
-    opacity 0.22s ease;
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.26s ease;
   box-sizing: border-box;
   overflow: visible;
 }
@@ -377,7 +426,7 @@
 .menuList {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   width: 100%;
   min-height: 74px;
   padding: 0;
@@ -403,7 +452,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 10px;
   width: 100%;
   min-height: 74px;
 }
@@ -414,7 +463,7 @@
   justify-content: center;
   width: auto;
   min-height: 38px;
-  padding: 0 6px;
+  padding: 0 10px;
   border: none;
   border-radius: 0;
   background: transparent;
@@ -454,7 +503,7 @@
 .menuPrimaryAction:hover,
 .submenuLink:hover,
 .submenuSpotlight:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .menuPrimaryAction:hover,
@@ -522,9 +571,9 @@
 
 .submenuShell {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) 292px;
+  grid-template-columns: 1fr;
   gap: 18px;
-  min-height: 300px;
+  min-height: 0;
   padding: 18px 20px 20px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0;
@@ -893,7 +942,7 @@
   .dropMenu {
     top: 0;
     left: 0;
-    width: min(88vw, 380px);
+    width: min(90vw, 396px);
     height: 100dvh;
     padding: 108px 20px calc(24px + env(safe-area-inset-bottom, 0px));
     border-top: none;
@@ -917,7 +966,7 @@
     flex-direction: column;
     width: 100%;
     min-height: 0;
-    gap: 12px;
+    gap: 18px;
   }
 
   .menuItem {
@@ -935,15 +984,15 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) 42px;
     justify-content: stretch;
-    gap: 10px;
+    gap: 14px;
     min-height: 0;
   }
 
   .menuPrimaryAction {
     width: 100%;
-    min-height: 50px;
+    min-height: 56px;
     justify-content: flex-start;
-    padding: 0 18px;
+    padding: 0 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
@@ -968,8 +1017,8 @@
   }
 
   .menuSecondaryAction {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.03);
@@ -997,7 +1046,7 @@
 
   .submenuVisible {
     max-height: 900px;
-    margin-top: 12px;
+    margin-top: 14px;
     pointer-events: auto;
   }
 
@@ -1069,13 +1118,13 @@
   }
 
   .dropMenu {
-    width: min(86vw, 320px);
+    width: min(88vw, 336px);
     padding-top: 98px;
   }
 
   .menuItemRow {
     grid-template-columns: minmax(0, 1fr) 38px;
-    gap: 8px;
+    gap: 10px;
   }
 
   .menuSecondaryAction {

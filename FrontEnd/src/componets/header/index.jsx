@@ -185,6 +185,21 @@ const SETTINGS_TEXT = {
   },
 };
 
+const ADMIN_PANEL_TEXT = {
+  fi: "Hallintapaneeli",
+  en: "Administrative panel",
+  ru: "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u043f\u0430\u043d\u0435\u043b\u044c",
+  de: "Administrationsbereich",
+  fr: "Panneau d'administration",
+  it: "Pannello amministrativo",
+  el: "\u03a0\u03af\u03bd\u03b1\u03ba\u03b1\u03c2 \u03b4\u03b9\u03b1\u03c7\u03b5\u03af\u03c1\u03b9\u03c3\u03b7\u03c2",
+  es: "Panel de administraci\u00f3n",
+  et: "Halduspaneel",
+  lv: "Administr\u0113\u0161anas panelis",
+  lt: "Administravimo skydelis",
+  pl: "Panel administracyjny",
+};
+
 const THEME_LABELS = {
   fi: { light: "Vaalea", dark: "Tumma", burgundy: "Viininpunainen", olive: "Oliivi" },
   en: {
@@ -405,10 +420,12 @@ export function Header() {
   const [isOrderStatusOpen, setIsOrderStatusOpen] = useState(false);
   const [theme, setTheme] = useState(getInitialTheme);
 
+  const headerRef = useRef(null);
   const drawerRef = useRef(null);
   const drawerToggleRef = useRef(null);
   const languageMenu = useRef(null);
   const accountMenu = useRef(null);
+  const lastScrollYRef = useRef(0);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -419,6 +436,7 @@ export function Header() {
   const latestOrder = useSelector((state) => state.orders.latestOrder);
 
   const settingsText = SETTINGS_TEXT[language] || SETTINGS_TEXT.en;
+  const adminPanelLabel = ADMIN_PANEL_TEXT[language] || ADMIN_PANEL_TEXT.en;
   const themeLabels = THEME_LABELS[language] || THEME_LABELS.en;
   const orderLabels = ORDER_STATUS_TEXT[language] || ORDER_STATUS_TEXT.en;
   const customSetContent = getCustomSetContent(language);
@@ -447,6 +465,7 @@ export function Header() {
         backgroundColor: user?.avatarColor || "#ffffff",
         color: getAvatarTextColor(user?.avatarColor || "#ffffff"),
       };
+  const canOpenAdmin = Boolean(user?.is_staff || user?.is_superuser);
 
   const closeDrawer = useCallback(() => {
     setIsDrawerOpen(false);
@@ -489,7 +508,6 @@ export function Header() {
       {
         id: "shop",
         label: t("header.shop"),
-        to: "/shop",
         children: {
           groups: [
             {
@@ -545,22 +563,9 @@ export function Header() {
                   label: resolvedInstantLabel,
                   to: "/instock",
                 },
-                {
-                  id: "custom-set",
-                  label: customSetContent.navLabel,
-                  to: "/custom-set",
-                },
               ],
             },
           ],
-          spotlight: {
-            to: "/custom-set",
-            image: customSetContent.cards?.[0]?.image || "/homNav/Rastat.jpg",
-            eyebrow: customSetContent.homeBadge,
-            title: customSetContent.homeTitle,
-            description: customSetContent.homeText,
-            actionLabel: customSetContent.navLabel,
-          },
         },
       },
       {
@@ -577,31 +582,18 @@ export function Header() {
               title: homeSectionContent.servicesNavLabel,
               items: [
                 {
-                  id: "about",
-                  label: homeSectionContent.aboutNavLabel,
-                  to: getSectionLink(HOME_SECTION_IDS.about),
+                  id: "custom-set-service",
+                  label: customSetContent.navLabel,
+                  to: "/custom-set",
                 },
                 {
-                  id: "gallery",
-                  label: t("home.galleryTitle"),
-                  to: getSectionLink(HOME_SECTION_IDS.gallery),
-                },
-                {
-                  id: "reviews",
-                  label: t("home.reviewsTitle"),
-                  to: getSectionLink(HOME_SECTION_IDS.reviews),
+                  id: "weaving-service",
+                  label: homeSectionContent.weavingNavLabel,
+                  to: getSectionLink(HOME_SECTION_IDS.weaving),
                 },
               ],
             },
           ],
-          spotlight: {
-            to: getSectionLink(HOME_SECTION_IDS.about),
-            image: "/homNav/HiuksetLetillä.jpg",
-            eyebrow: homeSectionContent.servicesNavLabel,
-            title: homeSectionContent.aboutNavLabel,
-            description: t("home.aboutText"),
-            actionLabel: homeSectionContent.aboutNavLabel,
-          },
         },
       },
       {
@@ -633,7 +625,6 @@ export function Header() {
     return items;
   }, [
     customSetContent,
-    homeSectionContent.aboutNavLabel,
     homeSectionContent.expertiseNavLabel,
     homeSectionContent.servicesNavLabel,
     resolvedCurlsOnMiniDreadLabel,
@@ -716,6 +707,82 @@ export function Header() {
     };
   }, [isDrawerOpen]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const applyHeaderVisibility = (isVisible) => {
+      const headerElement = headerRef.current;
+      if (!headerElement) {
+        return;
+      }
+
+      headerElement.style.transform = isVisible
+        ? "translate3d(0, 0, 0)"
+        : "translate3d(0, calc(-100% - 10px), 0)";
+      headerElement.style.opacity = isVisible ? "1" : "0.92";
+      headerElement.style.pointerEvents = isVisible ? "auto" : "none";
+      headerElement.dataset.headerState = isVisible ? "visible" : "hidden";
+    };
+
+    const handleScroll = () => {
+      const currentScrollY = Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop,
+        0,
+      );
+      const lastScrollY = lastScrollYRef.current;
+      const delta = currentScrollY - lastScrollY;
+
+      if (isDrawerOpen) {
+        applyHeaderVisibility(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      if (currentScrollY <= 24) {
+        applyHeaderVisibility(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      lastScrollYRef.current = currentScrollY;
+
+      if (Math.abs(delta) < 8) {
+        return;
+      }
+
+      applyHeaderVisibility(delta < 0);
+    };
+
+    applyHeaderVisibility(true);
+    lastScrollYRef.current = Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+      0,
+    );
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isDrawerOpen]);
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      const headerElement = headerRef.current;
+      if (headerElement) {
+        headerElement.style.transform = "translate3d(0, 0, 0)";
+        headerElement.style.opacity = "1";
+        headerElement.style.pointerEvents = "auto";
+        headerElement.dataset.headerState = "visible";
+      }
+    }
+  }, [isDrawerOpen]);
+
   const toggleDrawer = () => {
     setIsDrawerOpen((prev) => {
       const nextOpen = !prev;
@@ -739,22 +806,6 @@ export function Header() {
     }
 
     setExpandedMenuId((prev) => (prev === id ? null : id));
-  };
-
-  const openDesktopSubmenu = (id) => {
-    if (!isDesktopViewport()) {
-      return;
-    }
-
-    setActiveDesktopSubmenu(id);
-  };
-
-  const closeDesktopSubmenu = (id) => {
-    if (!isDesktopViewport()) {
-      return;
-    }
-
-    setActiveDesktopSubmenu((prev) => (prev === id ? null : prev));
   };
 
   const selectLanguage = (code) => {
@@ -785,6 +836,21 @@ export function Header() {
       isActive ? styles.menuPrimaryActionActive : ""
     }`;
 
+    if (item.children) {
+      return (
+        <button
+          type="button"
+          className={className}
+          onClick={() => toggleMenuSection(item.id)}
+          aria-expanded={
+            item.id === expandedMenuId || item.id === activeDesktopSubmenu
+          }
+        >
+          <span className={styles.menuActionLabel}>{item.label}</span>
+        </button>
+      );
+    }
+
     if (item.to) {
       return (
         <Link to={item.to} className={className} onClick={closeDrawer}>
@@ -793,20 +859,15 @@ export function Header() {
       );
     }
 
-    return (
-      <button
-        type="button"
-        className={className}
-        onClick={() => toggleMenuSection(item.id)}
-      >
-        <span className={styles.menuActionLabel}>{item.label}</span>
-      </button>
-    );
+    return null;
   };
 
   return (
     <>
-      <div className={styles.header}>
+      <div
+        ref={headerRef}
+        className={`${styles.header} ${styles.headerVisible}`}
+      >
         <div className={styles.nav}>
           <button
             type="button"
@@ -984,6 +1045,19 @@ export function Header() {
                   >
                     {settingsText.settings}
                   </button>
+
+                  {canOpenAdmin ? (
+                    <a
+                      href="/admin/"
+                      className={`${styles.accountLink} ${styles.accountAdminLink}`}
+                      aria-label={adminPanelLabel}
+                      onClick={() => setIsAccountOpen(false)}
+                    >
+                      <span className={styles.accountAdminText}>
+                        {adminPanelLabel}
+                      </span>
+                    </a>
+                  ) : null}
                 </div>
 
                 <button
@@ -1020,10 +1094,7 @@ export function Header() {
           <ul className={styles.menuList}>
             {navigationItems.map((item) => {
               const childLinks = item.children
-                ? [
-                    ...item.children.groups.flatMap((group) => group.items),
-                    item.children.spotlight,
-                  ]
+                ? item.children.groups.flatMap((group) => group.items)
                 : [];
               const isActive =
                 matchesRoute(item.to) ||
@@ -1037,8 +1108,6 @@ export function Header() {
                   className={`${styles.menuItem} ${
                     item.children ? styles.menuItemWithSubmenu : ""
                   } ${isExpanded ? styles.menuItemExpanded : ""}`}
-                  onMouseEnter={() => item.children && openDesktopSubmenu(item.id)}
-                  onMouseLeave={() => item.children && closeDesktopSubmenu(item.id)}
                 >
                   <div className={styles.menuItemRow}>
                     {renderPrimaryAction(item, isActive)}
@@ -1090,25 +1159,6 @@ export function Header() {
                           ))}
                         </div>
 
-                        <Link
-                          to={item.children.spotlight.to}
-                          className={styles.submenuSpotlight}
-                          onClick={closeDrawer}
-                        >
-                          <div className={styles.submenuSpotlightMedia}>
-                            <img
-                              src={item.children.spotlight.image}
-                              alt={item.children.spotlight.title}
-                            />
-                          </div>
-
-                          <div className={styles.submenuSpotlightCopy}>
-                            <span>{item.children.spotlight.eyebrow}</span>
-                            <strong>{item.children.spotlight.title}</strong>
-                            <p>{item.children.spotlight.description}</p>
-                            <em>{item.children.spotlight.actionLabel}</em>
-                          </div>
-                        </Link>
                       </div>
                     </div>
                   ) : null}

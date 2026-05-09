@@ -77,6 +77,8 @@ const normalizeUser = (payload) => {
     id: user.id,
     username: user.username,
     email: user.email,
+    is_staff: Boolean(user.is_staff ?? user.isStaff),
+    is_superuser: Boolean(user.is_superuser ?? user.isSuperuser),
     avatar:
       user.avatar ||
       user.photo ||
