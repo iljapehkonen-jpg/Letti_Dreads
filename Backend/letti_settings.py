@@ -1,12 +1,17 @@
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
-import sys
 
 
 BASE_DIR = Path(__file__).resolve().parent
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
+SETTINGS_PATH = BASE_DIR / "Letti_dreads_Backend" / "settings.py"
 
-from Letti_dreads_Backend.settings import *  # noqa: F403
+spec = spec_from_file_location("embedded_letti_settings", SETTINGS_PATH)
+module = module_from_spec(spec)
+assert spec.loader is not None
+spec.loader.exec_module(module)
 
+for key in dir(module):
+    if key.isupper():
+        globals()[key] = getattr(module, key)
 
 TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates", *TEMPLATES[0].get("DIRS", [])]
