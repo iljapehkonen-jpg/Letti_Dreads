@@ -13,6 +13,8 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
+    "ablaze-bot.space",
+    "www.ablaze-bot.space",
 ]
 
 extra_allowed_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "")
